@@ -32,7 +32,7 @@ esac
 
 AUTHOR_NAME="$(git log -1 "$TRAVIS_COMMIT" --pretty="%aN")"
 COMMITTER_NAME="$(git log -1 "$TRAVIS_COMMIT" --pretty="%cN")"
-COMMIT_SUBJECT="$(gWEBHOOKit log -1 "$TRAVIS_COMMIT" --pretty="%s")"
+COMMIT_SUBJECT="$(git log -1 "$TRAVIS_COMMIT" --pretty="%s")"
 COMMIT_MESSAGE="$(git log -1 "$TRAVIS_COMMIT" --pretty="%b")"
 
 if [ "$AUTHOR_NAME" == "$COMMITTER_NAME" ]; then
