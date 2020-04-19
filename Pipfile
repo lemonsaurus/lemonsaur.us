@@ -13,7 +13,6 @@ whitenoise = "*"
 
 [dev-packages]
 "flake8" = "*"
-"flake8-import-order" = "*"
 
 [requires]
 python_version = "3.6"
