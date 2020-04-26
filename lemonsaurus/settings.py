@@ -143,7 +143,12 @@ STATICFILES_DIRS = [
 # Settings for django-simple-bulma
 BULMA_SETTINGS = {
     "variables": {
-        "primary": "#FF0000"
+        "primary": "#272727",
+        "secondary": "#fffeb5",
+        "navbar-item-img-max-height": "5rem",
+        "navbar-item-color": "#fffeb5",
+        "navbar-background-color": "#272727"
+
     }
 }
 

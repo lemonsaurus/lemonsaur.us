@@ -19,10 +19,44 @@
         <meta name="theme-color" content="#ffffff">
 
         <!-- Other head stuff can go here -->
-        {% block head %} {% endblock %}
+        {% block head %}
+          <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+        {% endblock %}
     </head>
 
     <body>
+
+        <!-- For now, we can just add the nav here -->
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+              <img src="{% static "images/lemon_stegosaurus.png" %}">
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarItems">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div id="navbarItems" class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item">
+                LinkedIn
+              </a>
+              <a class="navbar-item">
+                YouTube
+              </a>
+              <a class="navbar-item">
+                GitHub
+              </a>
+              <a class="navbar-item">
+                Python Discord
+              </a>
+            </div>
+          </div>
+        </nav>
+
         {% block body %} {% endblock %}
     </body>
 </html>
