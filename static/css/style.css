@@ -30,3 +30,32 @@ body .container {
 body .container img {
     width: 22em;
 }
+
+.shade-container {
+    display: flex;
+    position: absolute;
+    left: -1539px;
+    right: 0px;
+    top: -28px;
+}
+
+.shade-box {
+    background-color: black;
+    height: 10000px;
+    opacity: 25%;
+}
+
+.shade-curve {
+    background-color: black;
+    height: 10000px;
+    width: 100%;
+    border-top-left-radius: 80%;
+    opacity: 25%;
+}
+
+
+@media only screen and (max-width: 1088px) {
+  .shade-container {
+    visibility: hidden;
+  }
+}

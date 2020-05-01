@@ -2,9 +2,11 @@
 {% load static %}
 
 {% block body %}
-<div class="container">
-  <img src="{% static "images/lemon_portrait.png" %}"/>
-</div>
-
-
+  <div class="shade-container">
+    <div class="shade-curve"></div>
+    <div class="shade-box"></div>
+  </div>
+  <div class="container">
+    <img src="{% static "images/lemon_portrait.png" %}"/>
+  </div>
 {% endblock %}
