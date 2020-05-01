@@ -1,7 +1,7 @@
 html {
     background-image: url("bg_lemons_blurred.png");
     background-repeat: repeat;
-    background-size: 8%;
+    background-size: 11em;
     overflow-y: hidden;
     overflow-x: hidden;
 }
@@ -9,6 +9,7 @@ html {
 /* Hamburger should proceed directly below nav */
 #navbarItems {
     padding: 0;
+    color:
 }
 
 /* Hamburger should be centered */
@@ -27,5 +28,5 @@ body .container {
 }
 
 body .container img {
-    width: 25%;
+    width: 22em;
 }
