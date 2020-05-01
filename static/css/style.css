@@ -1,7 +1,9 @@
 html {
-    background-image: url("background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url("bg_lemons_blurred.png");
+    background-repeat: repeat;
+    background-size: 8%;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 /* Hamburger should proceed directly below nav */
@@ -24,3 +26,6 @@ body .container {
     padding-top: 2%;
 }
 
+body .container img {
+    width: 25%;
+}
