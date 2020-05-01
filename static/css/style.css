@@ -69,3 +69,23 @@ body .container img {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
 }
+
+/* Make the burger fatter */
+.navbar-burger span {
+    height: 3px
+}
+.navbar-burger span:nth-child(4) {
+    visibility: hidden;
+}
+.navbar-burger span:nth-child(1) {
+    top: calc(50% - 8px);
+}
+.navbar-burger span:nth-child(3) {
+    top: calc(50% + 6px);
+}
+.navbar-burger.is-active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.navbar-burger.is-active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
