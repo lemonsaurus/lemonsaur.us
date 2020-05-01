@@ -11,11 +11,6 @@ html {
     padding: 0;
 }
 
-/* Hamburger should be centered */
-.navbar-burger {
-    height: auto;
-}
-
 /* Add more space between items */
 a.navbar-item {
     margin-right: 2em;
@@ -55,9 +50,13 @@ body .container img {
 
 
 @media only screen and (max-width: 1088px) {
-  .shade-container {
-    visibility: hidden;
-  }
+    .shade-container {
+        visibility: hidden;
+    }
+
+    a.navbar-item {
+        margin-right: 0em;
+    }
 }
 
 .noselect {
@@ -70,22 +69,42 @@ body .container img {
                                   supported by Chrome, Opera and Firefox */
 }
 
+/* No color change when hovering burger */
+.navbar-burger:hover {
+    color: #fffeb5;
+    background-color: #343434;
+}
+
 /* Make the burger fatter */
+.navbar-burger {
+    width: 5.5em;
+    height: auto;
+}
 .navbar-burger span {
-    height: 3px
+    height: 0.5em;
+    width: 3em;
+    left: calc(50% - 1.5em);
+}
+.navbar-burger span:hover {
+    height: 0.5em;
+    width: 3em;
+    left: calc(50% - 1.5em);
+}
+.navbar-burger span:nth-child(1) {
+    top: calc(50% - 1em);
+}
+.navbar-burger span:nth-child(2) {
+    top: calc(50%);
+}
+.navbar-burger span:nth-child(3) {
+    top: calc(50% + 1em);
 }
 .navbar-burger span:nth-child(4) {
     visibility: hidden;
 }
-.navbar-burger span:nth-child(1) {
-    top: calc(50% - 8px);
-}
-.navbar-burger span:nth-child(3) {
-    top: calc(50% + 6px);
-}
 .navbar-burger.is-active span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(1em) rotate(45deg);
 }
 .navbar-burger.is-active span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-1em) rotate(-45deg);
 }
