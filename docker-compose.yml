@@ -5,7 +5,7 @@ services:
     image: heavysaturn/lemonsaurus:latest
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/lemonsaurus.Dockerfile
     container_name: lemonsaurus
     restart: always
     ports:
