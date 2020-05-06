@@ -15,10 +15,10 @@ whitenoise = "*"
 "flake8" = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"
 
 [scripts]
-start          = "gunicorn --preload -w 12 -b 0.0.0.0:10015 lemonsaurus.wsgi"
+start          = "gunicorn --preload -b 0.0.0.0:8000 lemonsaurus.wsgi:application --threads 8 -w 4"
 lint           = "python -m flake8"
 makemigrations = "python manage.py makemigrations"
 showmigrations = "python manage.py showmigrations"
@@ -27,7 +27,7 @@ migrate        = "python manage.py migrate"
 test           = "python manage.py test"
 collectstatic  = "python manage.py collectstatic --noinput"
 clean          = "rm -rf __pycache__ htmlcov .coverage .pytest_cache"
-build          = "docker build -t heavysaturn/lemonsaurus:latest -f docker/Dockerfile ."
+build          = "docker build -t heavysaturn/lemonsaurus:latest -f docker/lemonsaurus.Dockerfile ."
 push           = "docker push heavysaturn/lemonsaurus:latest"
-buildbase      = "docker build -t heavysaturn/lemonsaurus-base:latest -f docker/Dockerfile.base ."
+buildbase      = "docker build -t heavysaturn/lemonsaurus-base:latest -f docker/base.Dockerfile ."
 pushbase       = "docker push heavysaturn/lemonsaurus-base:latest"

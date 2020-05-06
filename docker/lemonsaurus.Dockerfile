@@ -4,16 +4,12 @@ FROM heavysaturn/lemonsaurus-base:latest
 COPY . /lemonsaurus
 WORKDIR /lemonsaurus
 
-# Set up the virtual environment
+# Install dependencies
 RUN pipenv clean
-RUN pipenv sync
+RUN pipenv install
 
 # Move all static files to a /staticfiles folder
 RUN pipenv run collectstatic --noinput
 
-# Open the port that nginx will communicate through
-EXPOSE 10015
-
 # Make tini the default command handler, and run the pipenv script called start.
-ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["pipenv", "run", "start"]

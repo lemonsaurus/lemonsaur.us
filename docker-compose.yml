@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  kpm_ansatt:
+    image: heavysaturn/lemonsaurus:latest
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: lemonsaurus
+    restart: always
+    ports:
+      - 8000:8000
+    environment:
+      SECRET_KEY: o03(9jflf7!p_k*kzf4tzwkv%5712341e@xa0st7bfa)9^3_mt%mo
