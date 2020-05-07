@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  kpm_ansatt:
+  lemonsaurus:
     image: heavysaturn/lemonsaurus:latest
     build:
       context: .
