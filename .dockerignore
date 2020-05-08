@@ -13,3 +13,4 @@ Vagrantfile
 .gitignore
 .travis.yml
 docker
+docker-compose.yml
