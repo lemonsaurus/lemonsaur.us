@@ -26,8 +26,6 @@ ALLOWED_HOSTS = [
     "lemonsaur.us",
     "www.leonsandoy.com",
     "leonsandoy.com",
-    "www.heavysaturn.com",
-    "heavysaturn.com",
     "localhost",
     "127.0.0.1"
 ]
