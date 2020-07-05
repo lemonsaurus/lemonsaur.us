@@ -11,6 +11,16 @@ html {
     padding: 0;
 }
 
+/* Give the nav a bit of padding */
+nav.navbar {
+    padding: 0.5em 0 0.5em 0;
+}
+
+/* Smaller navbar items */
+.navbar-item img{
+    max-height: 3.5rem;
+}
+
 /* Add more space between items */
 a.navbar-item {
     margin-right: 2em;
