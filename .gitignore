@@ -134,9 +134,5 @@ dmypy.json
 # Alembic
 migrations/
 
-# ignore files in staticfiles, but keep the folder in the repo. we'll build the files locally
-staticfiles/*
-!staticfiles/.keep
-
 # Ignore the plugins
 plugins/

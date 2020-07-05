@@ -1,16 +1,17 @@
+# Venv and cache stuff
 .venv
-scripts
-htmlcov
 __pycache__
-.vagrant
-.pytest_cache
+
+# Git stuff
 .git
-.github
-.cache
-Vagrantfile
-.coverage
-.coveragerc
 .gitignore
-.travis.yml
+.github
+
+# Docker stuff
 docker
 docker-compose.yml
+
+# The app itself, since this will be local volumes
+static
+lemonsaurus
+apps

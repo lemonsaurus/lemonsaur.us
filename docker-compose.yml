@@ -13,6 +13,6 @@ services:
     environment:
       SECRET_KEY: o03(9jflf7!p_k*kzf4tzwkv%5712341e@xa0st7bfa)9^3_mt%mo
     volumes:
-      - ./static/:/lemonsaurus/static/
-      - ./lemonsaurus/:/lemonsaurus/lemonsaurus/
-      - ./apps/:/lemonsaurus/apps/
+      - ./static/:/static/
+      - ./lemonsaurus/:/lemonsaurus/
+      - ./apps/:/apps/
