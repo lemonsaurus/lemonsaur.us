@@ -1,15 +1,15 @@
-FROM heavysaturn/lemonsaurus-base:latest
+FROM python:3.8.2-slim-buster
 
-# Move the new files into the right folder
-COPY . /lemonsaurus
-WORKDIR /lemonsaurus
+# Allow service to handle stops gracefully
+STOPSIGNAL SIGQUIT
+
+# Install pipenv
+RUN pip install pipenv
 
 # Install dependencies
-RUN pipenv clean
-RUN pipenv install
+COPY Pipfile* ./
+RUN pipenv lock --requirements > requirements.txt
+RUN pip install -r requirements.txt
 
-# Move all static files to a /staticfiles folder
-RUN pipenv run collectstatic --noinput
-
-# Make tini the default command handler, and run the pipenv script called start.
-CMD ["pipenv", "run", "start"]
+# Start the server
+CMD ["gunicorn", "--preload", "-b", "0.0.0.0:8002", "lemonsaurus.wsgi:application", "--threads", "8", "-w", "4"]
