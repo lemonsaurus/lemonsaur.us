@@ -4,9 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- Bulma-related imports -->
-        {% bulma %}
-
         <!-- Favicon section -->
         <link rel="apple-touch-icon" sizes="57x57" href="{% static "favicons/apple-icon-57x57.png"%}">
         <link rel="apple-touch-icon" sizes="60x60" href="{% static "favicons/apple-icon-60x60.png"%}">
@@ -26,11 +23,16 @@
         <meta name="msapplication-TileImage" content="{% static "favicons/ms-icon-144x144.png"%}">
         <meta name="theme-color" content="#ffffff">
 
+        <!-- Bulma-related imports -->
+        <link rel="stylesheet" type="text/css" href="{% static "css/bulma.css" %}"/>
+
         <!-- Other head stuff can go here -->
         {% block head %}
           <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
           <title>Lemonsaurus!</title>
         {% endblock %}
+
+
     </head>
 
     <body>

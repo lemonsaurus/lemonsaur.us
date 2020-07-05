@@ -158,5 +158,5 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 
     # Now add the custom Bulma one.
-    'django_simple_bulma.finders.SimpleBulmaFinder',
+    # 'django_simple_bulma.finders.SimpleBulmaFinder',
 ]
