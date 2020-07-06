@@ -51,8 +51,6 @@ LOGGING = {
 
 # Application definition
 INSTALLED_APPS = [
-    'crispy_forms',
-    'django_simple_bulma',
     'apps.main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -137,26 +135,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Make whitenoise serve from /static folder and autorefresh.
 WHITENOISE_USE_FINDERS = True
 WHITENOISE_AUTOREFRESH = True
-
-# Settings for django-simple-bulma
-BULMA_SETTINGS = {
-    'extensions': [],
-    "variables": {
-        "primary": "#272727",
-        "secondary": "#fffeb5",
-        "navbar-item-img-max-height": "5rem",
-        "navbar-item-color": "#fffeb5",
-        "navbar-background-color": "#272727",
-        "navbar-item-hover-background-color": "#343434"
-    }
-}
-
-# Adding the finder for django-simple-bulma
-STATICFILES_FINDERS = [
-    # First add the two default Finders, since this will overwrite the default.
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-
-    # Now add the custom Bulma one.
-    # 'django_simple_bulma.finders.SimpleBulmaFinder',
-]

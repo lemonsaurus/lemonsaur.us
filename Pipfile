@@ -6,13 +6,10 @@ name = "pypi"
 [packages]
 gunicorn = "*"
 django = "*"
-django-crispy-forms = "*"
-django-simple-bulma = "*"
-pillow = "*"
 whitenoise = "*"
 
 [dev-packages]
-"flake8" = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.8"
@@ -22,12 +19,5 @@ start          = "gunicorn --preload -b 0.0.0.0:8002 lemonsaurus.wsgi:applicatio
 lint           = "python -m flake8"
 makemigrations = "python manage.py makemigrations"
 showmigrations = "python manage.py showmigrations"
-createapp      = "python manage.py startapp"
 migrate        = "python manage.py migrate"
 test           = "python manage.py test"
-collectstatic  = "python manage.py collectstatic --noinput"
-clean          = "rm -rf __pycache__ htmlcov .coverage .pytest_cache"
-build          = "docker build -t heavysaturn/lemonsaurus:latest -f docker/lemonsaurus.Dockerfile ."
-push           = "docker push heavysaturn/lemonsaurus:latest"
-buildbase      = "docker build -t heavysaturn/lemonsaurus-base:latest -f docker/base.Dockerfile ."
-pushbase       = "docker push heavysaturn/lemonsaurus-base:latest"
