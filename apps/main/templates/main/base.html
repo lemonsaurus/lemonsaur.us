@@ -29,14 +29,26 @@
         <!-- Other head stuff can go here -->
         {% block head %}
           <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
-          <title>Lemonsaurus!</title>
+          <script src="{% static "js/main.js" %}"></script>
         {% endblock %}
 
+        <!-- Metatags -->
+        <title>Lemonsaurus!</title>
 
+        <meta charset="UTF-8">
+        <meta name="description" content="The personal website of Leon Sandøy">
+        <meta name="keywords" content="Python, YouTube, Discord, Leon, Sandøy, Lemonsaurus">
+        <meta name="author" content="Leon Sandøy">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Lemonsaurus!" />
+        <meta property="og:description" content="The personal website of Leon Sandøy" />
+        <meta property="og:url" content="https://lemonsaur.us" />
+        <meta property="og:image" content="{% static 'images/meta_thumbnail.png' %}" />
     </head>
 
     <body>
-
         <!-- For now, we can just add the nav here -->
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
