@@ -29,10 +29,16 @@ a.navbar-item {
 body .container {
     text-align: center;
     padding-top: 2%;
+    width: 50em;
+    height: 40em;
 }
 
-body .container img {
-    width: 22em;
+body .container.portrait {
+    background: url('../images/portrait/mustache/white_postman.png') center,
+                url('../images/portrait/hair/old_bald.png') center,
+                url('../images/portrait/features/young.png') center,
+                url('../images/portrait/baseface.png') center;
+    background-repeat: no-repeat;
 }
 
 .shade-container {
