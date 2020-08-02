@@ -26,20 +26,40 @@ a.navbar-item {
     margin-right: 2em;
 }
 
-body .container {
-    text-align: center;
-    padding-top: 2%;
-    width: 50em;
-    height: 40em;
-}
-
-body .container.portrait {
+div.portrait {
     background: url('../images/portrait/mustache/brown_postman.png') center,
                 url('../images/portrait/beard/brown_long.png') center,
                 url('../images/portrait/hair/hipster.png') center,
                 url('../images/portrait/features/young.png') center,
                 url('../images/portrait/baseface.png') center;
     background-repeat: no-repeat;
+    cursor:pointer;
+    text-align: center;
+    padding-top: 2%;
+    width: 26em;
+    height: 40em;
+}
+
+div.menu {
+    text-align: center;
+    padding-top: 8em;
+    display: flex;
+    flex-direction: column;
+    width: 29em;
+    height: 27em;
+    background: url('../images/customize_menu/customize.png') no-repeat center;
+}
+
+div.menu .row {
+    display: flex;
+    justify-content: center;
+    margin-bottom:2em;
+}
+
+div.menu .row p {
+    margin-left: 4em;
+    margin-right: 4em;
+    color: #fffeb5;
 }
 
 .shade-container {
