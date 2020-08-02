@@ -18,7 +18,7 @@ nav.navbar {
 
 /* Smaller navbar items */
 .navbar-item img{
-    max-height: 3.5rem;
+    max-height: 3.0rem;
 }
 
 /* Add more space between items */
@@ -34,8 +34,9 @@ body .container {
 }
 
 body .container.portrait {
-    background: url('../images/portrait/mustache/white_postman.png') center,
-                url('../images/portrait/hair/old_bald.png') center,
+    background: url('../images/portrait/mustache/brown_postman.png') center,
+                url('../images/portrait/beard/brown_long.png') center,
+                url('../images/portrait/hair/hipster.png') center,
                 url('../images/portrait/features/young.png') center,
                 url('../images/portrait/baseface.png') center;
     background-repeat: no-repeat;
