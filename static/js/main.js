@@ -1,49 +1,85 @@
-function updatePortrait(mustache, beard, hair, features) {
+function updateComponents() {
+    /* Update the components */
+    console.log("Updating components...");
+    window.hair = window.portrait_components.hair[window.hairIndex];
+    window.beard = window.portrait_components.beard[window.beardIndex];
+    window.mustache = window.portrait_components.mustache[window.mustacheIndex];
+    window.features = window.portrait_components.features[window.featuresIndex];
+}
+
+function updatePortrait() {
     /* Update the dynamic portrait */
+    console.log("Updating portrait...");
     var backgroundImageString =
-      "url('" + mustache[1] + "'), url('" +
-      beard[1] + "'), url('" + hair[1] + "'), url('" +
-      features[1] + "'), url('" +
+      "url('" + window.mustache[1] + "'), url('" +
+      window.beard[1] + "'), url('" + window.hair[1] + "'), url('" +
+      window.features[1] + "'), url('" +
       "static/images/portrait/baseface.png')";
 
     // Update the portrait
     window.portrait.style.backgroundImage = backgroundImageString;
 }
 
-function updateMenu(mustache, beard, hair, features) {
+function updateMenu() {
     /* Update the customization menu */
-    document.querySelector("#customize-option-1").innerHTML = mustache[0];
-    document.querySelector("#customize-option-2").innerHTML = beard[0];
-    document.querySelector("#customize-option-3").innerHTML = hair[0];
-    document.querySelector("#customize-option-4").innerHTML = features[0];
+    console.log("Updating menu...");
+    for (var step = 0; step < 4; step++) {
+        var option = document.querySelector("#customize-option-" + step);
+        option.innerHTML = window[window.component_types[step]][0];
+    }
+}
+
+function update() {
+    updateComponents();
+    updatePortrait();
+    updateMenu();
+}
+
+function changeComponent(type, increment) {
+    var components = window.portrait_components[type];
+    var currentIndex = window[type + "Index"];
+    var newIndex = (currentIndex + increment) % components.length;
+
+    window[type + "Index"] = newIndex;
+    update();
 }
 
 /* When the page has loaded... */
 document.addEventListener("DOMContentLoaded", function() {
 
     // Set initial components
-    window.hair_array = window.portrait_components.hair;
-    window.beard_array = window.portrait_components.beard;
-    window.mustache_array = window.portrait_components.mustache;
-    window.features_array = window.portrait_components.features;
-
-    window.hair = window.hair_array[1];
-    window.beard = window.beard_array[1];
-    window.mustache = window.mustache_array[0];
-    window.features = window.features_array[1];
+    window.component_types = Object.keys(window.portrait_components);
+    window.hairIndex = 1;
+    window.beardIndex = 1;
+    window.mustacheIndex = 0;
+    window.featuresIndex = 1;
 
     // Set up globals for the portrait and menu elements
     window.portrait = document.querySelector('div.portrait');
     window.menu = document.querySelector('div.menu');
 
     // Set initial states
-    updatePortrait(window.mustache, window.beard, window.hair, window.features);
-    updateMenu(window.mustache, window.beard, window.hair, window.features);
+    update();
 
     // Set up event handlers
     window.portrait.addEventListener('click', function() {
         window.portrait.style.display = "none";
         window.menu.style.display = "flex";
     });
+
+    for (var step = 0; step < 4; step++) {
+        (function () {
+            var left = document.querySelector('#left-arrow-' + step);
+            var right = document.querySelector('#right-arrow-' + step);
+            var component = window.component_types[step];
+
+            left.addEventListener('click', function(){
+                changeComponent(component, -1);
+            }, false);
+            right.addEventListener('click', function(){
+                changeComponent(component, 1);
+            }, false);
+        }());
+    }
 });
 
