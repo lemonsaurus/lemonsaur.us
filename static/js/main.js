@@ -64,12 +64,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Set up event handlers
     window.portrait.addEventListener('click', function() {
-        window.portrait.style.marginLeft = "25%";
+        window.portrait.style.marginRight = "-20%";
+        window.portrait.classList.add("customizing");
         menu.style.display = "flex";
     });
 
     doneButton.addEventListener('click', function() {
-        window.portrait.style.marginLeft = "auto";
+        window.portrait.style.marginRight = "auto";
+        window.portrait.classList.remove("customizing");
         menu.style.display = "none";
     });
 
