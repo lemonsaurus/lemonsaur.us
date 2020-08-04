@@ -61,14 +61,19 @@ div.menu .row p {
     margin-right: auto;
     color: #fffeb5;
 }
-div.menu img.done-button {
+img.done-button {
     margin-top: 0.5em;
-    cursor: pointer;
 }
 
 /* Arrows */
-div.menu img.arrow {
+img.arrow,
+img.done-button {
     cursor: pointer;
+    filter: brightness(87.5%);
+}
+img.arrow:hover,
+img.done-button:hover {
+    filter: brightness(105%);
 }
 img.arrow.right {
     margin-right: 4em;
