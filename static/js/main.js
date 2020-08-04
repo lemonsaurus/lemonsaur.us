@@ -69,9 +69,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Set up event handlers
     window.portrait.addEventListener('click', function() {
-        window.portrait.style.marginRight = "-20%";
-        window.portrait.classList.add("customizing");
-        menu.style.display = "flex";
+        if (window.portrait.classList.contains("customizing")) {
+            window.portrait.style.marginRight = "auto";
+            window.portrait.classList.remove("customizing");
+            menu.style.display = "none";
+        } else {
+            window.portrait.style.marginRight = "-20%";
+            window.portrait.classList.add("customizing");
+            menu.style.display = "flex";
+        }
     });
 
     doneButton.addEventListener('click', function() {
