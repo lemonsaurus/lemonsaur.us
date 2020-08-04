@@ -7,6 +7,7 @@ from typing import Dict, List, Tuple
 
 from django.conf import settings
 from django.shortcuts import render
+from django.utils.safestring import mark_safe
 from django.views import View
 
 log = logging.getLogger(__name__)
@@ -57,4 +58,4 @@ class Home(View):
         # Iterate through all the chargen components and create a list of parts.
         components = json.dumps(self._get_portrait_components())
         brand = self._get_random_brand()
-        return render(request, "main/home.html", {"brand": brand, "components": components})
+        return render(request, "main/home.html", {"brand": brand, "components": mark_safe(components)})

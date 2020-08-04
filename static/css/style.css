@@ -26,6 +26,7 @@ a.navbar-item {
     margin-right: 2em;
 }
 
+/* Dynamic portrait */
 div.portrait {
     background: url('../images/portrait/mustache/brown_postman.png') center,
                 url('../images/portrait/beard/brown_long.png') center,
@@ -40,6 +41,7 @@ div.portrait {
     height: 40em;
 }
 
+/* Customization menu */
 div.menu {
     text-align: center;
     padding-top: 8em;
@@ -62,6 +64,11 @@ div.menu .row p {
     color: #fffeb5;
 }
 
+div.menu img.arrow {
+    cursor: pointer;
+}
+
+/* Hamburger stuff */
 .shade-container {
     display: flex;
     position: absolute;
@@ -96,6 +103,7 @@ div.menu .row p {
     }
 }
 
+/* Don't allow drag selection */
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
