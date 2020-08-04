@@ -40,6 +40,11 @@ function changeComponent(type, increment) {
     var currentIndex = window[type + "Index"];
     var newIndex = (currentIndex + increment) % components.length;
 
+    // Are you serious? JavaScript, you suck.
+    if (newIndex < 0) {
+        newIndex = components.length + newIndex;
+    }
+
     window[type + "Index"] = newIndex;
     update();
 }
