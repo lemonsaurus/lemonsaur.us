@@ -28,11 +28,6 @@ a.navbar-item {
 
 /* Dynamic portrait */
 div.portrait {
-    background: url('../images/portrait/mustache/brown_postman.png') center,
-                url('../images/portrait/beard/brown_long.png') center,
-                url('../images/portrait/hair/hipster.png') center,
-                url('../images/portrait/features/young.png') center,
-                url('../images/portrait/baseface.png') center;
     background-repeat: no-repeat;
     cursor:pointer;
     text-align: center;
@@ -43,9 +38,10 @@ div.portrait {
 
 /* Customization menu */
 div.menu {
+    display: none;
     text-align: center;
     padding-top: 8em;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     width: 29em;
     height: 27em;

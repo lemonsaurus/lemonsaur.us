@@ -3,10 +3,9 @@
 
 {% block head %}
   <script>
-    var portrait_components = {{ components }}
+      var portrait_components = {{ components }}
   </script>
   <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
-  <script src="{% static "js/main.js" %}"></script>
 {% endblock %}
 
 {% block body %}
@@ -29,4 +28,5 @@
   </div>
 
   <div class="container noselect portrait"></div>
+  <script src="{% static "js/main.js" %}"></script>
 {% endblock %}

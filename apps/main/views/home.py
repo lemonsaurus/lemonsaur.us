@@ -38,7 +38,7 @@ class Home(View):
                 subcomponents = []
                 for file in item.iterdir():
                     subcomponents.append(
-                        (self._humanize_filename(file.stem), f"../images/portrait/{item.stem}/{file.name}")
+                        (self._humanize_filename(file.stem), f"static/images/portrait/{item.stem}/{file.name}")
                     )
 
                 components[item.name] = subcomponents
