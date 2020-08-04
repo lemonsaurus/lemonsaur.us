@@ -27,6 +27,10 @@ a.navbar-item {
 }
 
 /* Dynamic portrait */
+div.portrait-container {
+    display: flex;
+}
+
 div.portrait {
     background-repeat: no-repeat;
     cursor:pointer;
@@ -41,17 +45,17 @@ div.menu {
     display: none;
     text-align: center;
     padding-top: 8em;
-    /* display: flex; */
     flex-direction: column;
     width: 29em;
     height: 27em;
     background: url('../images/customize_menu/customize.png') no-repeat center;
+    margin-right: 25%;
 }
 
 div.menu .row {
     display: flex;
     justify-content: center;
-    margin-bottom:2em;
+    margin-bottom:1em;
 }
 
 div.menu .row p {
@@ -64,7 +68,12 @@ div.menu img.arrow {
     cursor: pointer;
 }
 
-/* Hamburger stuff */
+div.menu img.done-button {
+    margin-top: 0.5em;
+    cursor: pointer;
+}
+
+/* Background shade stuff */
 .shade-container {
     display: flex;
     position: absolute;

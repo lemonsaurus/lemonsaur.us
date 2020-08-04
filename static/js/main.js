@@ -56,15 +56,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Set up globals for the portrait and menu elements
     window.portrait = document.querySelector('div.portrait');
-    window.menu = document.querySelector('div.menu');
+    var menu = document.querySelector('div.menu');
+    var doneButton = document.querySelector('img.done-button');
 
     // Set initial states
     update();
 
     // Set up event handlers
     window.portrait.addEventListener('click', function() {
-        window.portrait.style.display = "none";
-        window.menu.style.display = "flex";
+        window.portrait.style.marginLeft = "25%";
+        menu.style.display = "flex";
+    });
+
+    doneButton.addEventListener('click', function() {
+        window.portrait.style.marginLeft = "auto";
+        menu.style.display = "none";
     });
 
     for (var step = 0; step < 4; step++) {
