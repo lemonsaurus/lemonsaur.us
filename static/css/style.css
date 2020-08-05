@@ -87,7 +87,7 @@ img.arrow.left {
     display: flex;
     position: absolute;
     left: -1539px;
-    right: 0px;
+    right: 0;
     top: -28px;
 }
 
@@ -106,30 +106,10 @@ img.arrow.left {
     box-shadow: 0 0 20px 20px black;
 }
 
-
-@media only screen and (max-width: 1088px) {
-    .shade-container {
-        visibility: hidden;
-    }
-
-    a.navbar-item {
-        margin-right: 0em;
-    }
-
-    div.portrait.customizing {
-        display: none;
-    }
-
-    div.menu {
-        margin-left: auto;
-    }
-}
-
 /* Don't allow drag selection */
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
        -moz-user-select: none; /* Old versions of Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
@@ -175,3 +155,48 @@ img.arrow.left {
 .navbar-burger.is-active span:nth-child(3) {
     transform: translateY(-1em) rotate(-45deg);
 }
+
+/* Responsiveness */
+@media only screen and (max-width: 1088px) {
+    .shade-container {
+        visibility: hidden;
+    }
+
+    a.navbar-item {
+        margin-right: 0;
+    }
+
+    div.portrait {
+        background-size: 90%;
+        margin-left: 2em;
+        margin-right: 0;
+    }
+
+    div.portrait.customizing {
+        z-index: 30;
+        position: absolute;
+        background-size: 18%;
+        height: 14%;
+        margin-left: 0;
+    }
+
+    div.menu {
+        margin-left: auto;
+        height: 100%;
+        width: 90%;
+        padding-top: 5em;
+        margin-top: 1.5em;
+    }
+
+    img.arrow.right {
+        margin-right: 2.5em;
+    }
+    img.arrow.left {
+        margin-left: 2.5em;
+    }
+
+    img.done-button {
+        margin-top: -1em;
+    }
+}
+
