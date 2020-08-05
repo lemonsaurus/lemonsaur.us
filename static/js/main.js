@@ -10,11 +10,13 @@ function updateComponents() {
 function updatePortrait() {
     /* Update the dynamic portrait */
     console.log("Updating portrait...");
-    var backgroundImageString =
-      "url('" + window.mustache[1] + "'), url('" +
-      window.beard[1] + "'), url('" + window.hair[1] + "'), url('" +
-      window.features[1] + "'), url('" +
-      "static/images/portrait/baseface.png')";
+    var backgroundImageString = (
+        `url('${window.mustache[1]}'),
+        url('${window.beard[1]}'),    
+        url('${window.hair[1]}'),     
+        url('${window.features[1]}'), 
+        url('static/images/portrait/baseface.png')`
+    );
 
     // Update the portrait
     window.portrait.style.backgroundImage = backgroundImageString;
