@@ -188,6 +188,12 @@ img.arrow.left {
         margin-top: 1.5em;
     }
 
+    div.menu div.row {
+        width: 27.5em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     img.arrow.right {
         margin-right: 2.5em;
     }
