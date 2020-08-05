@@ -60,8 +60,8 @@ function changeComponent(type, increment) {
 
 /* Set the default portrait you see when you load the page. */
 function setupInitialPortraitComponents(){
-    window.hairIndex = 1;
-    window.beardIndex = 1;
+    window.hairIndex = 0;
+    window.beardIndex = 0;
     window.mustacheIndex = 0;
     window.featuresIndex = 1;
     window.hairColorIndex = 1;
