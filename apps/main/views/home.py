@@ -42,21 +42,21 @@ class Home(View):
                     )
 
                     # Check which hair colors are available
-                    if not components.get("hair_colors"):
+                    if not components.get("hairColor"):
                         hair_colors = []
                         if file.is_dir():
                             for color in file.iterdir():
                                 if color.stem.title() not in hair_colors:
                                     hair_colors.append((color.stem.title(), color.name))
 
-                        components["hair_colors"] = hair_colors
+                        components["hairColor"] = hair_colors
 
                 components[item.name] = subcomponents
 
-        components['features'] = {
-            "Old": "static/images/portrait/base_old.png",
-            "Young": "static/images/portrait/base_young.png"
-        }
+        components['features'] = [
+            ("Old", "static/images/portrait/base_old.png"),
+            ("Young", "static/images/portrait/base_young.png"),
+        ]
 
         log.debug(components)
         return components

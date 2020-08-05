@@ -13,17 +13,17 @@ function updatePortraitComponents() {
     window.beard = window.portrait_components.beard[window.beardIndex];
     window.mustache = window.portrait_components.mustache[window.mustacheIndex];
     window.features = window.portrait_components.features[window.featuresIndex];
+    window.hairColor = window.portrait_components.hairColor[window.hairColorIndex];
 }
 
 /* Update the portrait itself with new components. */
 function updateDynamicPortrait() {
     console.debug('-- Updating portrait --');
     const backgroundImageString = (
-        `url('${window.mustache[1]}'),
-        url('${window.beard[1]}'),    
-        url('${window.hair[1]}'),     
-        url('${window.features[1]}'), 
-        url('static/images/portrait/baseface.png')`
+        `url('${window.mustache[1]}/${window.hairColor[1]}'),
+        url('${window.beard[1]}/${window.hairColor[1]}'),    
+        url('${window.hair[1]}/${window.hairColor[1]}'),     
+        url('${window.features[1]}')`
     );
     // The portrait comprises multiple images layered
     // on top of each other in the background attribute
@@ -33,7 +33,9 @@ function updateDynamicPortrait() {
 /* Update the customization menu with new component data. */
 function updateCustomizationMenu() {
     console.debug('-- Updating menu --');
-    for (let step = 0; step < 4; step++) {
+    for (let step = 0; step < 5; step++) {
+        console.log(window[window.component_types[step]]);
+
         let option = document.querySelector('#customize-option-' + step);
         option.innerHTML = window[window.component_types[step]][0];
     }
@@ -62,6 +64,7 @@ function setupInitialPortraitComponents(){
     window.beardIndex = 1;
     window.mustacheIndex = 0;
     window.featuresIndex = 1;
+    window.hairColorIndex = 1;
 }
 
 /* Set up the page with all initial states. */
