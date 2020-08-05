@@ -168,8 +168,8 @@ img.arrow.left {
 
     div.portrait {
         background-size: 90%;
-        margin-left: 2em;
-        margin-right: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     div.portrait.customizing {
