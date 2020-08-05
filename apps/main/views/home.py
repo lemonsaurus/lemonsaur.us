@@ -3,7 +3,7 @@ import logging
 import random
 import re
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Any, Dict
 
 from django.conf import settings
 from django.shortcuts import render
@@ -25,7 +25,7 @@ class Home(View):
         filename = re.sub(r"[-_]", " ", filename)
         return filename.title()
 
-    def _get_portrait_components(self) -> Dict[str, List[Tuple[str, str]]]:
+    def _get_portrait_components(self) -> Dict[str, Any]:
         """
         Iterates through all the portrait folders to look for components.
 
@@ -41,8 +41,24 @@ class Home(View):
                         (self._humanize_filename(file.stem), f"static/images/portrait/{item.stem}/{file.name}")
                     )
 
+                    # Check which hair colors are available
+                    if not components.get("hair_colors"):
+                        hair_colors = []
+                        if file.is_dir():
+                            for color in file.iterdir():
+                                if color.stem.title() not in hair_colors:
+                                    hair_colors.append((color.stem.title(), color.name))
+
+                        components["hair_colors"] = hair_colors
+
                 components[item.name] = subcomponents
 
+        components['features'] = {
+            "Old": "static/images/portrait/base_old.png",
+            "Young": "static/images/portrait/base_young.png"
+        }
+
+        log.debug(components)
         return components
 
     @staticmethod
