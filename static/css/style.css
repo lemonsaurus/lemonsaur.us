@@ -212,3 +212,23 @@ img.arrow.left {
     }
 }
 
+@media only screen and (max-width: 30em) {
+    div.menu {
+        width: 80vw;
+    }
+
+    div.menu div.row {
+        width: 75vw;
+    }
+
+    img.arrow.right {
+        margin-right: 1em;
+    }
+    img.arrow.left {
+        margin-left: 1em;
+    }
+
+    div.portrait.customizing {
+        margin-left: 0;
+    }
+}
