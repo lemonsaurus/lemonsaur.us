@@ -23,6 +23,9 @@
 
     <!-- Menu with customization options -->
     <div class="container noselect menu">
+      <div class="row">
+          <img class="customize-header" src="{% static "images/customize_menu/customize_text.png" %}">
+      </div>
       {% for n in '0123'|make_list %}
         <div class="row">
           <img class="arrow left" id="left-arrow-{{ n }}" src="{% static "images/customize_menu/arrow_left.png"%}">
