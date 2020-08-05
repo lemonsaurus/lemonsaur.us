@@ -1,106 +1,124 @@
-function updateComponents() {
-    /* Update the components */
-    console.log("Updating components...");
+/* globals console: true */
+
+/* Python-style modulo. */
+const modulo = (n, m) => ((n % m) + m) % m;
+
+/* Click event handler. */
+const onClick = (obj, handler) => obj.addEventListener('click', handler);
+
+/* Update all the components used for building the portrait. */
+function updatePortraitComponents() {
+    console.debug('-- Updating portrait components --');
     window.hair = window.portrait_components.hair[window.hairIndex];
     window.beard = window.portrait_components.beard[window.beardIndex];
     window.mustache = window.portrait_components.mustache[window.mustacheIndex];
     window.features = window.portrait_components.features[window.featuresIndex];
 }
 
-function updatePortrait() {
-    /* Update the dynamic portrait */
-    console.log("Updating portrait...");
-    var backgroundImageString = (
+/* Update the portrait itself with new components. */
+function updateDynamicPortrait() {
+    console.debug('-- Updating portrait --');
+    const backgroundImageString = (
         `url('${window.mustache[1]}'),
         url('${window.beard[1]}'),    
         url('${window.hair[1]}'),     
         url('${window.features[1]}'), 
         url('static/images/portrait/baseface.png')`
     );
-
-    // Update the portrait
+    // The portrait comprises multiple images layered
+    // on top of each other in the background attribute
     window.portrait.style.backgroundImage = backgroundImageString;
 }
 
-function updateMenu() {
-    /* Update the customization menu */
-    console.log("Updating menu...");
-    for (var step = 0; step < 4; step++) {
-        var option = document.querySelector("#customize-option-" + step);
+/* Update the customization menu with new component data. */
+function updateCustomizationMenu() {
+    console.debug('-- Updating menu --');
+    for (let step = 0; step < 4; step++) {
+        let option = document.querySelector('#customize-option-' + step);
         option.innerHTML = window[window.component_types[step]][0];
     }
 }
 
+/* Update all the dynamic parts. */
 function update() {
-    updateComponents();
-    updatePortrait();
-    updateMenu();
+    updatePortraitComponents();
+    updateDynamicPortrait();
+    updateCustomizationMenu();
 }
 
+/* Change a component. Used when you click the arrows in the menu. */
 function changeComponent(type, increment) {
-    var components = window.portrait_components[type];
-    var currentIndex = window[type + "Index"];
-    var newIndex = (currentIndex + increment) % components.length;
+    const components = window.portrait_components[type];
+    const currentIndex = window[type + 'Index'];
+    const newIndex = modulo(currentIndex + increment, components.length);
 
-    // Are you serious? JavaScript, you suck.
-    if (newIndex < 0) {
-        newIndex = components.length + newIndex;
-    }
-
-    window[type + "Index"] = newIndex;
+    window[type + 'Index'] = newIndex;
     update();
 }
 
-/* When the page has loaded... */
-document.addEventListener("DOMContentLoaded", function() {
-
-    // Set initial components
-    window.component_types = Object.keys(window.portrait_components);
+/* Set the default portrait you see when you load the page. */
+function setupInitialPortraitComponents(){
     window.hairIndex = 1;
     window.beardIndex = 1;
     window.mustacheIndex = 0;
     window.featuresIndex = 1;
+}
 
-    // Set up globals for the portrait and menu elements
-    window.portrait = document.querySelector('div.portrait');
-    var menu = document.querySelector('div.menu');
-    var doneButton = document.querySelector('img.done-button');
-
-    // Set initial states
+/* Set up the page with all initial states. */
+function setInitialStates(){
+    setupInitialPortraitComponents();
     update();
+}
 
-    // Set up event handlers
-    window.portrait.addEventListener('click', function() {
-        if (window.portrait.classList.contains("customizing")) {
-            window.portrait.style.marginRight = "auto";
-            window.portrait.classList.remove("customizing");
-            menu.style.display = "none";
-        } else {
-            window.portrait.style.marginRight = "-20%";
-            window.portrait.classList.add("customizing");
-            menu.style.display = "flex";
-        }
-    });
-
-    doneButton.addEventListener('click', function() {
-        window.portrait.style.marginRight = "auto";
-        window.portrait.classList.remove("customizing");
-        menu.style.display = "none";
-    });
-
-    for (var step = 0; step < 4; step++) {
-        (function () {
-            var left = document.querySelector('#left-arrow-' + step);
-            var right = document.querySelector('#right-arrow-' + step);
-            var component = window.component_types[step];
-
-            left.addEventListener('click', function(){
-                changeComponent(component, -1);
-            }, false);
-            right.addEventListener('click', function(){
-                changeComponent(component, 1);
-            }, false);
-        }());
-    }
+/* Fetch key view elements. */
+const findViewElements = () => ({
+    portrait: document.querySelector('div.portrait'),
+    menu: document.querySelector('div.menu'),
+    doneButton: document.querySelector('img.done-button'),
 });
 
+/* Set up event handlers for buttons and panels. */
+function setupEventHandlers({portrait, menu, doneButton}){
+    const disableCustomizationPanel = () => {
+        portrait.classList.remove('customizing');
+        portrait.style.marginRight = 'auto';
+        menu.style.display = 'none';
+    };
+
+    const enableCustomizationPanel = () => {
+        portrait.classList.add('customizing');
+        portrait.style.marginRight = '-20%';
+        menu.style.display = 'flex';
+    };
+
+    onClick(portrait, () => {
+        const customizationIsActive = portrait.classList.contains('customizing');
+        if (customizationIsActive)
+            disableCustomizationPanel();
+        else
+            enableCustomizationPanel();
+    });
+
+    onClick(doneButton, disableCustomizationPanel);
+
+    // forEach works like `enumerate` combined with `map` in Python
+    window.component_types.forEach( (type, position) => {
+        const leftArrow = document.querySelector('#left-arrow-' + position);
+        const rightArrow = document.querySelector('#right-arrow-' + position);
+        onClick(leftArrow, () => changeComponent(type, -1));
+        onClick(rightArrow, () => changeComponent(type, 1));
+    });
+}
+
+/* Make the page come alive! */
+function addInteractivity() {
+    const {portrait, menu, doneButton} = findViewElements();
+    window.component_types = Object.keys(window.portrait_components);
+    window.portrait = portrait;
+
+    setInitialStates();
+    setupEventHandlers({portrait, menu, doneButton});
+}
+
+/* When the page has loaded... */
+document.addEventListener('DOMContentLoaded', addInteractivity);
