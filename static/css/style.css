@@ -177,7 +177,7 @@ img.arrow.left {
         position: absolute;
         background-size: 18%;
         height: 14%;
-        margin-left: 0;
+        margin-left: calc(50vw - 16em);
     }
 
     div.menu {
