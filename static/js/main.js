@@ -10,13 +10,10 @@ const randInt = (n) => Math.floor(Math.random() * n);
 const onClick = (obj, handler) => obj.addEventListener('click', handler);
 
 /* Preloading an image */
-function preloadImage(url) {
-    (new Image()).src = url;
-}
+const preloadImage = (url) => (new Image()).src = url;
 
 /* Update all the components used for building the portrait. */
 function updatePortraitComponents() {
-    console.debug('-- Updating portrait components --');
     window.hair = window.portrait_components.hair[window.hairIndex];
     window.beard = window.portrait_components.beard[window.beardIndex];
     window.mustache = window.portrait_components.mustache[window.mustacheIndex];
@@ -26,7 +23,6 @@ function updatePortraitComponents() {
 
 /* Update the portrait itself with new components. */
 function updateDynamicPortrait() {
-    console.debug('-- Updating portrait --');
     const backgroundImageString = (
         `url('${window.mustache[1]}/${window.hairColor[1]}'),
         url('${window.beard[1]}/${window.hairColor[1]}'),    
@@ -40,10 +36,7 @@ function updateDynamicPortrait() {
 
 /* Update the customization menu with new component data. */
 function updateCustomizationMenu() {
-    console.debug('-- Updating menu --');
     for (let step = 0; step < 5; step++) {
-        console.log(window[window.component_types[step]]);
-
         let option = document.querySelector('#customize-option-' + step);
         option.innerHTML = window[window.component_types[step]][0];
     }
@@ -77,7 +70,7 @@ function randomizePortraitComponents() {
 
 /* Preload all the portrait components */
 function preloadPortraitComponents() {
-    console.debug("-- Preloading all portrait components --");
+    console.debug("Preloading all portrait components...");
 
     // Preload all components
     window.component_types.forEach((type, _) => {
@@ -106,7 +99,7 @@ function preloadPortraitComponents() {
             }
         });
     });
-    console.debug("-- Components preload complete --");
+    console.debug("Component preload complete!");
 }
 
 /* Set up the page with all initial states. */
