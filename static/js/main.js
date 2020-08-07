@@ -3,6 +3,9 @@
 /* Python-style modulo. */
 const modulo = (n, m) => ((n % m) + m) % m;
 
+/* Python-style randint. */
+const randInt = (n) => Math.floor(Math.random() * n);
+
 /* Click event handler. */
 const onClick = (obj, handler) => obj.addEventListener('click', handler);
 
@@ -58,18 +61,18 @@ function changeComponent(type, increment) {
     update();
 }
 
-/* Set the default portrait you see when you load the page. */
-function setupInitialPortraitComponents(){
-    window.hairIndex = 0;
-    window.beardIndex = 0;
-    window.mustacheIndex = 0;
-    window.featuresIndex = 1;
-    window.hairColorIndex = 1;
+/* Randomize the portrait components */
+function randomizePortraitComponents() {
+    window.hairIndex = randInt(window.portrait_components.hair.length);
+    window.beardIndex = randInt(window.portrait_components.beard.length);
+    window.mustacheIndex = randInt(window.portrait_components.mustache.length);
+    window.featuresIndex = randInt(window.portrait_components.features.length);
+    window.hairColorIndex = randInt(window.portrait_components.hairColor.length);
 }
 
 /* Set up the page with all initial states. */
 function setInitialStates(){
-    setupInitialPortraitComponents();
+    randomizePortraitComponents();
     update();
 }
 

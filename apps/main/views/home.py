@@ -57,8 +57,6 @@ class Home(View):
             ("Old", "static/images/portrait/base_old.png"),
             ("Young", "static/images/portrait/base_young.png"),
         ]
-
-        log.debug(components)
         return components
 
     @staticmethod
@@ -74,4 +72,8 @@ class Home(View):
         # Iterate through all the chargen components and create a list of parts.
         components = json.dumps(self._get_portrait_components())
         brand = self._get_random_brand()
-        return render(request, "main/home.html", {"brand": brand, "components": mark_safe(components)})
+        return render(
+            request,
+            "main/home.html",
+            {"brand": brand, "components": mark_safe(components)}
+        )
