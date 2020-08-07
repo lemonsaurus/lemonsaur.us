@@ -9,6 +9,11 @@ const randInt = (n) => Math.floor(Math.random() * n);
 /* Click event handler. */
 const onClick = (obj, handler) => obj.addEventListener('click', handler);
 
+/* Preloading an image */
+function preloadImage(url) {
+    (new Image()).src = url;
+}
+
 /* Update all the components used for building the portrait. */
 function updatePortraitComponents() {
     console.debug('-- Updating portrait components --');
@@ -70,8 +75,43 @@ function randomizePortraitComponents() {
     window.hairColorIndex = randInt(window.portrait_components.hairColor.length);
 }
 
+/* Preload all the portrait components */
+function preloadPortraitComponents() {
+    console.debug("-- Preloading all portrait components --");
+
+    // Preload all components
+    window.component_types.forEach((type, _) => {
+
+        // Skip the hairColor type. It has no files of its own, and instead
+        // is just a part of the path for mustaches, beards and hairstyles.
+        if (type === "hairColor") {
+            return;
+        }
+
+        const components = window.portrait_components[type];
+
+        // Iterate through all the components...
+        components.forEach((component, _) => {
+
+            // And preload the images for each hair color
+            for (let i = 0; i < window.portrait_components.hairColor.length; i++) {
+                let hairColor = window.portrait_components.hairColor[i];
+
+                // "features" don't have a hairColor.
+                if (type !== "features") {
+                    preloadImage(`${component[1]}/${hairColor[1]}`);
+                } else {
+                    preloadImage(`${component[1]}`);
+                }
+            }
+        });
+    });
+    console.debug("-- Components preload complete --");
+}
+
 /* Set up the page with all initial states. */
 function setInitialStates(){
+    preloadPortraitComponents();
     randomizePortraitComponents();
     update();
 }
