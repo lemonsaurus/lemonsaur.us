@@ -104,7 +104,6 @@ function preloadPortraitComponents() {
 
 /* Set up the page with all initial states. */
 function setInitialStates(){
-    preloadPortraitComponents();
     randomizePortraitComponents();
     update();
 }
@@ -156,6 +155,7 @@ function addInteractivity() {
     window.portrait = portrait;
 
     setInitialStates();
+    preloadPortraitComponents();
     setupEventHandlers({portrait, menu, doneButton});
 }
 
