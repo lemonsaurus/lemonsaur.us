@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-SECRET_KEY = os.environ.get("SECRET_KEY", "tiny_teapot")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG", False))
@@ -26,10 +26,15 @@ ALLOWED_HOSTS = [
     "lemonsaur.us",
     "www.leonsandoy.com",
     "leonsandoy.com",
-    "localhost",
-    "127.0.0.1",
-    "0.0.0.0"
 ]
+
+if DEBUG:
+    ALLOWED_HOSTS.extend([
+        "localhost",
+        "127.0.0.1",
+        "0.0.0.0",
+    ])
+
 APPEND_SLASH = True
 
 # Logging
