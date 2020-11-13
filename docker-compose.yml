@@ -10,8 +10,8 @@ services:
     restart: always
     ports:
       - 8002:8002
-    environment:
-      - SECRET_KEY=${SECRET_KEY}
+    env_file:
+      - .env
     volumes:
       - ./static/:/static/
       - ./lemonsaurus/:/lemonsaurus/
