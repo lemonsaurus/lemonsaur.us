@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   lemonsaurus:
-    image: heavysaturn/lemonsaurus:latest
+    image: lemonsaurus/lemonsaurus:latest
     build:
       context: .
       dockerfile: docker/lemonsaurus.Dockerfile
