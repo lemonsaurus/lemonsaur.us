@@ -4,7 +4,7 @@ FROM python:3.8.2-slim-buster
 STOPSIGNAL SIGQUIT
 
 # Install pipenv
-RUN pip install pipenv==2023.11.15
+RUN pip install pipenv==2018.11.26
 
 # Install dependencies
 COPY Pipfile* ./
