@@ -3,8 +3,8 @@
 // @author       Leon Sandøy (@lemonsaurus)
 // @namespace    http://tampermonkey.net/
 // @version      1.9.6
-// @updateURL    https://lemonsaur.us/static/js/zohopeople_icon_unpacker.js
-// @downloadURL  https://lemonsaur.us/static/js/zohopeople_icon_unpacker.js
+// @updateURL    https://lemonsaur.us/static/js/zohopeople_icon_unpacker.user.js
+// @downloadURL  https://lemonsaur.us/static/js/zohopeople_icon_unpacker.user.js
 // @description  Unpacks the description in timesheets, and allows certain modals to be closed with Escape.
 // @match        https://people.zoho.com/ion8hrportal/zp*
 // @run-at       document-idle
