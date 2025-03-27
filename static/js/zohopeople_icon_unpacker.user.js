@@ -2,10 +2,10 @@
 // @name         Zoho People Timesheet Description Icon Unpacker
 // @author       Leon Sandøy (@lemonsaurus)
 // @namespace    http://tampermonkey.net/
-// @version      1.9.6
+// @version      1.9.7
 // @updateURL    https://lemonsaur.us/static/js/zohopeople_icon_unpacker.user.js
 // @downloadURL  https://lemonsaur.us/static/js/zohopeople_icon_unpacker.user.js
-// @description  Unpacks the description in timesheets, and allows certain modals to be closed with Escape.
+// @description  Unpacks the description in timesheets, and allows certain modals to be closed with Escape. Also fixes timelog display during edit mode.
 // @match        https://people.zoho.com/ion8hrportal/zp*
 // @run-at       document-idle
 // @grant        none
@@ -87,6 +87,55 @@
         const originalShowDescPopup = Timetracker.timesheet.showDescPopup;
         Timetracker.timesheet.showDescPopup = function(id) {
             return originalShowDescPopup.apply(this, arguments);
+        };
+    }
+
+    /*
+       Override edit functions to fix timelog display:
+
+       When an edit is initiated via the edit button (which calls showEditTimesheetListEntry),
+       we hide the second cell (td.mw80) of the corresponding timelog row. Then, when edit mode is
+       cancelled (via hideEditTimesheetListEntry), we restore the cell's display.
+    */
+    function overrideEditFunctions() {
+        // Override the function that initiates edit mode.
+        const originalShowEdit = Timetracker.timesheet.showEditTimesheetListEntry;
+        Timetracker.timesheet.showEditTimesheetListEntry = function(id, extra) {
+            // Call the original function to enable edit mode.
+            originalShowEdit.apply(this, arguments);
+            // Find the cancel button associated with this edit mode.
+            const cancelButton = document.getElementById("cancelTimesheetListEdit" + id);
+            if (cancelButton) {
+                // Get the timelog row containing the cancel button.
+                const row = cancelButton.closest("tr.timelog");
+                if (row) {
+                    const cells = row.querySelectorAll("td");
+                    if (cells.length >= 2) {
+                        // Hide the second cell (index 1) to fix the display.
+                        cells[1].style.display = "none";
+                    }
+                }
+            }
+        };
+
+        // Override the function that cancels edit mode.
+        const originalHideEdit = Timetracker.timesheet.hideEditTimesheetListEntry;
+        Timetracker.timesheet.hideEditTimesheetListEntry = function(id) {
+            // Call the original function to cancel edit mode.
+            originalHideEdit.apply(this, arguments);
+            // Find the cancel button associated with this edit mode.
+            const cancelButton = document.getElementById("cancelTimesheetListEdit" + id);
+            if (cancelButton) {
+                // Get the timelog row containing the cancel button.
+                const row = cancelButton.closest("tr.timelog");
+                if (row) {
+                    const cells = row.querySelectorAll("td");
+                    if (cells.length >= 2) {
+                        // Restore the display of the second cell.
+                        cells[1].style.display = "";
+                    }
+                }
+            }
         };
     }
 
@@ -197,6 +246,7 @@
 
     waitForTimetracker().then(() => {
         overrideShowDescPopup();
+        overrideEditFunctions(); // New: Override edit functions to adjust timelog display.
         pollForNewTables();
     });
 
